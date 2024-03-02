@@ -1,0 +1,12 @@
+stages:
+  - stage: 'Build_RG_with_terraform'
+    displayName: 'Install terraform'
+    jobs:
+      - job: build
+        displayName: 'Install terraform on agent'
+        steps:
+          - template: tf-stages\tf-init.yml
+          - template: tf-stages\tf-fmt.yml
+          - template: tf-stages\tf-validate.yml
+          - template: tf-stages\tf-plan.yml
+#  - template: tf-stages\checkov.yml

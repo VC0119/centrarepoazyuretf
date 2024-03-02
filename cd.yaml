@@ -1,0 +1,14 @@
+stages:
+ - template: ./ci.yaml
+ - stage: devPlan
+   displayName: 'dev-apply'
+   jobs:
+   - deployment: deploytodev
+     displayName: Dev env deploy
+     continueOnError: false
+     environment: imran-dev
+     strategy:
+       runOnce:
+         deploy:
+           steps:
+             - template: tf-stages/tf-apply.yml
